@@ -1,0 +1,107 @@
+.only-view {
+    pointer-events: none !important;
+}
+
+//      view button
+::ng-deep .btn.view {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    color: #5fa7fb;
+}
+
+::ng-deep .btn.view:hover {
+    color: #498ddb;
+    cursor: pointer;
+}
+
+::ng-deep .btn.view:active {
+    color: #3c7ac2;
+}
+
+::ng-deep .btn.view:focus {
+    box-shadow: 0 0 0 0.2rem #5fa7fb80 !important;
+}
+
+//      edit button
+::ng-deep .btn.edit {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    color: #6dd400;
+}
+
+::ng-deep .btn.edit:hover {
+    color: #63c100;
+    cursor: pointer;
+}
+
+::ng-deep .btn.edit:active {
+    color: #58aa01;
+}
+
+::ng-deep .btn.edit:focus {
+    box-shadow: 0 0 0 0.2rem #6dd40080 !important;
+}
+
+//      delete button
+::ng-deep .btn.delete {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    color: #f5505f;
+}
+
+::ng-deep .btn.delete:hover {
+    color: #d94654;
+    cursor: pointer;
+}
+
+::ng-deep .btn.delete:active {
+    color: #c13d4a;
+}
+
+::ng-deep .btn.delete:focus {
+    box-shadow: 0 0 0 0.2rem #f5505f80 !important;
+}
+
+//       restore button
+::ng-deep .btn.restore {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    color: #ECEC38;
+}
+
+::ng-deep .btn.restore:hover {
+    color: #ECEC38;
+    cursor: pointer;
+}
+
+::ng-deep .btn.restore:active {
+    color: #ECEC38;
+}
+
+::ng-deep .btn.restore:focus {
+    box-shadow: 0 0 0 0.2rem #ECEC38 !important;
+}
+
+//      add button
+::ng-deep .btn.add {
+    background-color: transparent !important;
+    border-color: transparent !important;
+    color: #31bdaf;
+}
+
+::ng-deep .btn.add:hover {
+    color: #30a79b;
+    cursor: pointer;
+}
+
+::ng-deep .btn.add:active {
+    color: #29978c;
+}
+
+::ng-deep .btn.add:focus {
+    box-shadow: 0 0 0 0.2rem #31bdaf80 !important;
+}
+
+.mat-icon {
+    vertical-align: bottom;
+}

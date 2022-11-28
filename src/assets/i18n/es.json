@@ -1,0 +1,43 @@
+{
+    "login": {
+        "button": "Iniciar sesión"
+    },
+    "topBar": {
+        "sync": "Sincronizar configuración",
+        "lang": {
+            "title": "Idioma",
+            "spanish": "Español",
+            "english": "Inglés"
+        },
+        "chat": "Chat",
+        "notifications": "Notificaciones",
+        "signout": "Cerrar sesión"
+    },
+    "sidebar": {
+        "menu": {
+            "flights": "Vuelos",
+            "wb-format": "Formato W&B",
+            "aircraft-info": "Información de aeronaves",
+            "settings": "Configuraciones",
+            "sys-settings": "Ajustes de sistema",
+            "users": "Usuarios",
+            "airport-contacts": "Contactos de aeropuertos",
+            "performance": "Rendimiento",
+            "dispatchers-assignment": "Asignación de despachadores",
+            "refueling-order": "Orden de combustible"
+        },
+        "control-level": "Control de nivel"
+    },
+    "table": {
+        "search": "Buscar"
+    },
+    "users": {
+        "list": {
+            "title": "Usuarios",
+            "button": "Agregar usuario",
+            "search": "usuario",
+            "search-placeholder": "Ej. John Doe",
+            "empty-legend": "No se encontraron registros de usuarios"
+        }
+    }
+}

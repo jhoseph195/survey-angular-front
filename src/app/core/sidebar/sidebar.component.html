@@ -1,0 +1,30 @@
+<mat-drawer-container [style.background]="'transparent'" [style.height]="'100%'" autosize>
+    <mat-drawer #drawer class="sidenav" mode="side" [style.background]="'#3C4048'"
+        [style.width]="openedSize" opened>
+        <ng-container *ngFor="let item of menu">
+            <button mat-button class="menu-btn py-1 text-left"
+                [class]="(checkPathSelected(item.path) ? 'selected' : '')" [style.color]="'#aeaeae'"
+                [style.width]="openedSize" (click)="changeView(item.path)">
+                <mat-icon #tooltip="matTooltip" [matTooltip]="item.text | translate" [matTooltipPosition]="'right'">{{item.icon}}
+                </mat-icon>
+                <span class="px-3">
+                    {{item.text}}
+                </span>
+            </button>
+        </ng-container>
+
+        <div class="version" [style.color]="'#ffffffa0'" [style.background]="'#3C4048'"
+            [style.width]="openedSize">
+            <div class="row">
+                <div class="contain col-md-12 px-4 py-3 text-center" [style.color]="'#ffffffa0'">
+                    <button class="btn-block" [style.background-color]="'#00ABB3'" [style.color]="'#fff'"
+                        mat-flat-button (click)="changeView('/login')">Cerrar sesión</button>
+                </div>
+            </div>
+        </div>
+    </mat-drawer>
+
+    <div [style.height]="'100%'">
+        <ng-content></ng-content>
+    </div>
+</mat-drawer-container>

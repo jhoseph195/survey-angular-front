@@ -1,0 +1,24 @@
+<app-table [total]="data.length"[searchTitle]="'encuesta respondida'" [searchPlaceholder]="'Ej. Encuesta de satisfacción'"
+    [buttonBgColor]="'#00ABB3'" [buttonTextColor]="'#FFFFFF'" [showButton]="false"
+    [noRecordsText]="'No se encontraron registros de encuestas respondida'">
+    <thead>
+        <tr>
+            <th class="col-md-4">Encuesta</th>
+            <th class="col-md-4">Capturado por</th>
+            <th class="col-md-2 text-center">Fecha</th>
+            <th class="col-md-2 text-center">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let item of data">
+            <tr>
+                <td>{{item.title}}</td>
+                <td>{{item.capturedBy}}</td>
+                <td class="text-center">{{item.date}}</td>
+                <td class="text-center">
+                    <app-mini-button [type]="1" (btnClicked)="view(item.id)"></app-mini-button>
+                </td>
+            </tr>
+        </ng-container>
+    </tbody>
+</app-table>

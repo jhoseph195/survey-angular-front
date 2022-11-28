@@ -1,0 +1,25 @@
+.menu-btn {
+    border-bottom: 1px solid #ffffff30;
+}
+
+.menu-btn span {
+    font-weight: 100;
+}
+
+.menu-btn.selected {
+    border-left: 5px #00ABB3 solid;
+    border-radius: 0px;
+    padding-left: 11px;
+    background-color: #3C4048c0 !important;
+}
+
+.version {
+    position: fixed;
+    bottom: 0px;
+    border-top: 1px solid #ffffff30;
+    z-index: 1;
+}
+.version .contain {
+    border-top: 1px solid #ffffff30 !important;
+}
+

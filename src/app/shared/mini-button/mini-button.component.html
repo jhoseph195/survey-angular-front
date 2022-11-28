@@ -1,0 +1,5 @@
+<ng-container *ngIf="type >= min && type <= max">
+    <button class="btn {{buttons[type - 1].class}} {{class}} mx-1 px-1 py-1 {{(onlyView == true ? 'only-view' : '')}}" placement="bottom" (click)="clickButton()">
+      <mat-icon class="search-icon">{{buttons[type - 1].icon}}</mat-icon>
+    </button>
+</ng-container>

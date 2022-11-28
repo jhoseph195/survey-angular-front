@@ -1,0 +1,51 @@
+
+::ng-deep body {
+    overflow: hidden;
+}
+
+::ng-deep .text-right {
+    text-align: right !important;
+}
+
+::ng-deep .text-center {
+    text-align: center !important;
+}
+
+::ng-deep .text-left {
+    text-align: left !important;
+}
+
+::ng-deep .footer {
+    position: absolute;
+    bottom: -5px;
+    width: 100%;
+}
+
+::ng-deep .btn-block {
+    width: 100% !important;
+}
+
+::ng-deep .slash-title {
+    border-radius: 0px !important;
+    border-left-color: #d7d7d7 !important;
+    border-left-width: 1px !important;
+    border-left-style: double !important;
+}
+
+::ng-deep .mat-slide-toggle-bar {
+    background-color: #aaaaaa;
+}
+
+::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-bar {
+    background-color: #00ABB3;
+}
+
+::ng-deep .mat-slide-toggle.mat-checked .mat-slide-toggle-thumb {
+    background-color: #fff;
+}
+
+::ng-deep .sticky-card {
+    position: sticky !important;
+    top: 16px;
+    z-index: 11;
+}

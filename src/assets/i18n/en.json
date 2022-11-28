@@ -1,0 +1,43 @@
+{
+    "login": {
+        "button": "Sign in"
+    },
+    "topBar": {
+        "sync": "Sync settings",
+        "lang": {
+            "title": "Language",
+            "spanish": "Spanish",
+            "english": "English"
+        },
+        "chat": "Chat",
+        "notifications": "Notifications",
+        "signout": "Sign out"
+    },
+    "sidebar": {
+        "menu": {
+            "flights": "Flights",
+            "wb-format": "W&B form",
+            "aircraft-info": "Aircraft info",
+            "settings": "Settings",
+            "sys-settings": "System settings",
+            "users": "Users",
+            "airport-contacts": "Airport contacts",
+            "performance": "Performance",
+            "dispatchers-assignment": "Dispatchers assignment",
+            "refueling-order": "Refueling order"
+        },
+        "control-level": "Level control"
+    },
+    "table": {
+        "search": "Search"
+    },
+    "users": {
+        "list": {
+            "title": "Users",
+            "button": "Add user",
+            "search": "user",
+            "search-placeholder": "Ex. John Doe",
+            "empty-legend": "No user records found"
+        }
+    }
+}

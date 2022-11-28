@@ -1,0 +1,17 @@
+<mat-toolbar class="px-0" [style.background]="'#3C4048'">
+    <div class="row btn-block">
+        <div class="col-md-6">
+            <button class="px-1 text-center" mat-stroked-button [style.color]="'#ffffffa0'" [style.border-color]="'#ffffff00'"
+                [style.width]="'255px'" (click)="changeView('/panel')">
+                <img src="./assets/images/logo_white.png" class="px-2" [style.height]="'35px'">
+            </button>
+        </div>
+        <div class="col-md-6 text-right">
+            <button class="mx-1" [style.color]="'#ffffff'" [style.background]="'#00ABB3'" mat-mini-fab matRipple
+                [matRippleColor]="'#ffffff00'" [matRippleDisabled]="true" #tooltip="matTooltip"
+                [matTooltip]="'John Doe'" [matTooltipPosition]="'below'">
+                <span [style.font-size]="'x-large'">JD</span>
+            </button>
+        </div>
+    </div>
+</mat-toolbar>

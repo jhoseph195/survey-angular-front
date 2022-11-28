@@ -1,0 +1,34 @@
+<mat-card class="m-3">
+    <mat-card-title>Empresas</mat-card-title>
+    <mat-divider></mat-divider>
+    <mat-card-content class="pt-3">
+        <app-table [total]="data.length"[searchTitle]="'empresa'" [searchPlaceholder]="'Ej. Ejemplomex SA de CV'"
+            [buttonBgColor]="'#00ABB3'" [buttonTextColor]="'#FFFFFF'" [buttonText]="'Agregar empresa'"
+            [buttonIcon]="'add'" [noRecordsText]="'No se encontraron registros de empresas'" (btnClicked)="add()">
+            <thead>
+                <tr>
+                    <th class="col-md-3">Empresa</th>
+                    <th class="col-md-3">Giro</th>
+                    <th class="col-md-2 text-center">Email</th>
+                    <th class="col-md-2 text-center">Teléfono</th>
+                    <th class="col-md-2 text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let item of data">
+                    <tr>
+                        <td>{{item.socialReason}}</td>
+                        <td>{{item.bussinessActivity}}</td>
+                        <td class="text-center">{{item.contactEmail}}</td>
+                        <td class="text-center">{{item.contactPhone}}</td>
+                        <td class="text-center">
+                            <app-mini-button [type]="1" (btnClicked)="view(item.id)"></app-mini-button>
+                            <app-mini-button [type]="2" (btnClicked)="edit(item.id)"></app-mini-button>
+                            <app-mini-button [type]="3" (btnClicked)="delete(item.id)"></app-mini-button>
+                        </td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </app-table>
+    </mat-card-content>
+</mat-card>

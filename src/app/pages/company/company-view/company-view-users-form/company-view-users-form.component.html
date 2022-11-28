@@ -1,0 +1,49 @@
+<mat-card class="sticky-card m-3">
+    <mat-card-title>{{userId ? 'Editar' : 'Agregar'}} usuario</mat-card-title>
+    <mat-divider></mat-divider>
+    <mat-card-content class="pt-3">
+        <div class="row">
+            <div class="col-md-2">
+                <button class="btn-block text-left" mat-flat-button [style.background]="'#FFFFFF'"
+                    [style.color]="'#00ABB3'" (click)="back()">
+                    <mat-icon>arrow_back</mat-icon> Regresar
+                </button>
+            </div>
+            <div class="col-md-3 offset-md-7">
+                <button class="btn-block" mat-flat-button [style.background]="'#00ABB3'"
+                    [style.color]="'#FFFFFF'" (click)="save()">Guardar usuario</button>
+            </div>
+        </div>
+        <div class="row pt-5">
+            <div class="col-md-6">
+                <mat-form-field class="btn-block" appearance="legacy">
+                    <mat-label>_Nombre de usuario</mat-label>
+                    <input [(ngModel)]="user.user" matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field class="btn-block" appearance="legacy">
+                    <mat-label>Email</mat-label>
+                    <input [(ngModel)]="user.email" matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field class="btn-block" appearance="legacy">
+                    <mat-label>Contraseña</mat-label>
+                    <input type="password" [(ngModel)]="user.password" matInput>
+                </mat-form-field>
+            </div>
+            <div class="col-md-6">
+                <mat-form-field class="btn-block" appearance="legacy">
+                    <mat-label>Tipo</mat-label>
+                    <mat-select [(value)]="user.type" #type>
+                        <mat-option [value]="'SUPER ADMIN'">Super admin</mat-option>
+                        <mat-option [value]="'ADMIN'">Admin</mat-option>
+                        <mat-option [value]="'CAPTURADOR'">Capturador</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>
+<div class="row" [style.height]="'150px'"></div>

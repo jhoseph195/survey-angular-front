@@ -1,0 +1,25 @@
+<app-table [total]="data.length"[searchTitle]="'usuario'" [searchPlaceholder]="'Ej. John Doe'"
+    [buttonBgColor]="'#00ABB3'" [buttonTextColor]="'#FFFFFF'" [buttonText]="'Agregar usuario'"
+    [buttonIcon]="'add'" [noRecordsText]="'No se encontraron registros de usuarios'" (btnClicked)="add()">
+    <thead>
+        <tr>
+            <th class="col-md-4">Nombre</th>
+            <th class="col-md-4">Correo</th>
+            <th class="col-md-2 text-center">Tipo</th>
+            <th class="col-md-2 text-center">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <ng-container *ngFor="let item of data">
+            <tr>
+                <td>{{item.user}}</td>
+                <td>{{item.email}}</td>
+                <td class="text-center">{{item.type}}</td>
+                <td class="text-center">
+                    <app-mini-button [type]="2" (btnClicked)="edit(item.id)"></app-mini-button>
+                    <app-mini-button [type]="3" (btnClicked)="delete(item.id)"></app-mini-button>
+                </td>
+            </tr>
+        </ng-container>
+    </tbody>
+</app-table>
