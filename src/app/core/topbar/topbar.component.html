@@ -9,8 +9,8 @@
         <div class="col-md-6 text-right">
             <button class="mx-1" [style.color]="'#ffffff'" [style.background]="'#00ABB3'" mat-mini-fab matRipple
                 [matRippleColor]="'#ffffff00'" [matRippleDisabled]="true" #tooltip="matTooltip"
-                [matTooltip]="'John Doe'" [matTooltipPosition]="'below'">
-                <span [style.font-size]="'x-large'">JD</span>
+                [matTooltip]="userName" [matTooltipPosition]="'below'">
+                <span [style.font-size]="'x-large'">{{initials}}</span>
             </button>
         </div>
     </div>

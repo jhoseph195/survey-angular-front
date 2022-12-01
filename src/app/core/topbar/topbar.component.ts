@@ -14,10 +14,17 @@ export class TopbarComponent implements OnInit {
 
   public selectedLang: string | null = '';
 
+  public initials: string = '';
+  public userName: string = '';
+
   ngOnInit(): void {
     this.selectedLang = sessionStorage.getItem('lang');
+
+    this.userName = localStorage.getItem('user-name') || '';
+    const userNameSplited = this.userName.split(' ');
+    this.initials = ((userNameSplited[0] ? userNameSplited[0][0] : '') + (userNameSplited[1] ? userNameSplited[1][0] : '')).toUpperCase()
   }
-  
+
   changeView(path: string) {
     this.router.navigate([path]);
   }

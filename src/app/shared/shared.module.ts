@@ -7,6 +7,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatIconModule } from '@angular/material/icon';
 import { TranslateModule } from '@ngx-translate/core';
 import { MiniButtonComponent } from './mini-button/mini-button.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { MiniButtonComponent } from './mini-button/mini-button.component';
     MiniButtonComponent
   ],
   imports: [
+    FormsModule,
     CommonModule,
     MatPaginatorModule,
     MatButtonModule,

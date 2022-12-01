@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { UserService } from '../../../../services/users.service';
 
 @Component({
   selector: 'app-company-view-users-list',
@@ -8,53 +9,51 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class CompanyViewUsersListComponent implements OnInit {
 
-  private surveyId; 
+  private companyId; 
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private userService: UserService,
   ) {
-    this.surveyId = this.route.snapshot.queryParamMap.get('survey');
+    this.companyId = this.route.snapshot.queryParamMap.get('company');
   }
 
   private ADD_PATTH = '/panel/companys/view/users/add';
   private EDDIT_PATTH = '/panel/companys/view/users/edit';
 
-  public data = [
-    {
-      id: 1,
-      user: 'John Doe',
-      email: 'jdoe@gmail.com',
-      password: '1234',
-      type: 'SUPER ADMIN',
-    }, {
-      id: 2,
-      user: 'Joseph Gómez',
-      email: 'jgomez@gmail.com',
-      password: '1234',
-      type: 'CAPTURADOR',
-    }, {
-      id: 3,
-      user: 'Carlos Velazco',
-      email: 'cvelazco@gmail.com',
-      password: '1234',
-      type: 'ADMIN',
-    }
-  ]
+  public data = null;
+  public total = 0;
+
+  public filters = {};
 
   ngOnInit(): void {
   }
 
   add() {
-    this.changeView(this.ADD_PATTH);
+    this.changeView(this.ADD_PATTH, {company: this.companyId});
   }
 
-  edit(id: Number) {
-    this.changeView(this.EDDIT_PATTH, {user: id});
+  edit(id: number) {
+    this.changeView(this.EDDIT_PATTH, {company: this.companyId, user: id});
   }
 
-  delete(id: Number) {
+  delete(id: number) {
+    this.userService.delete(id).subscribe((result: any) => {
+      this.getData(this.filters);
+    });
   }
+  
+  getData(filters: any) {
+    this.filters = filters;
+    filters.companyId = this.companyId;
+    
+    this.userService.getWithFilters(filters).subscribe((result: any) => {
+      this.data = result.data;
+      this.total = result.count;
+    });
+  }
+
 
   changeView(path: string, data?: any) {
     if (data) {

@@ -17,8 +17,8 @@
         <div class="row pt-5">
             <div class="col-md-6">
                 <mat-form-field class="btn-block" appearance="legacy">
-                    <mat-label>_Nombre de usuario</mat-label>
-                    <input [(ngModel)]="user.user" matInput>
+                    <mat-label>Nombre de usuario</mat-label>
+                    <input [(ngModel)]="user.name" matInput>
                 </mat-form-field>
             </div>
             <div class="col-md-6">
@@ -37,9 +37,9 @@
                 <mat-form-field class="btn-block" appearance="legacy">
                     <mat-label>Tipo</mat-label>
                     <mat-select [(value)]="user.type" #type>
-                        <mat-option [value]="'SUPER ADMIN'">Super admin</mat-option>
+                        <mat-option [value]="'SUPER_ADMIN'">Super admin</mat-option>
                         <mat-option [value]="'ADMIN'">Admin</mat-option>
-                        <mat-option [value]="'CAPTURADOR'">Capturador</mat-option>
+                        <mat-option [value]="'CAPTURIST '">Capturador</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>

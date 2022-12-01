@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import packageJson from '../../../../package.json';
+import { AuthService } from '../../services/auth.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -31,6 +32,7 @@ export class SidebarComponent implements OnInit {
 
   constructor(
     private router: Router,
+    private authService: AuthService,
   ) { }
 
   ngOnInit(): void {
@@ -42,6 +44,14 @@ export class SidebarComponent implements OnInit {
 
   checkPathSelected(path: string) {
     return this.selectedPath.includes(path);
+  }
+
+  logout() {
+    this.authService.logout().subscribe((result: any) => {
+      localStorage.clear();
+  
+      this.router.navigate([`/login`]);
+    });
   }
 
   changeView(route: string) {

@@ -24,10 +24,10 @@
             <div class="col-md-6">
                 <mat-form-field class="btn-block" appearance="legacy">
                     <mat-label>Empresa</mat-label>
-                    <mat-select [(ngModel)]="survey.idCompany">
-                        <mat-option [value]="1">Empresa 1</mat-option>
-                        <mat-option [value]="2">Empresa 2</mat-option>
-                        <mat-option [value]="3">Empresa 3</mat-option>
+                    <mat-select [(ngModel)]="survey.companyId">
+                        <ng-container *ngFor="let company of companys">
+                            <mat-option [value]="company.id">{{company.socialReason}}</mat-option>
+                        </ng-container>
                     </mat-select>
                 </mat-form-field>
             </div>
@@ -41,7 +41,7 @@
         </div>
     </mat-card-content>
 </mat-card>
-<ng-container *ngFor="let question of survey.questions; let i = index">
+<ng-container *ngFor="let question of survey.format; let i = index">
     <mat-card class="m-3 p-3">
         <div class="row pb-3">
             <div class="col-md-8">
@@ -69,7 +69,7 @@
             </div>
             <div class="col-md-1 text-right">
                 <button mat-flat-button [style.background]="'#FFFFFF'"
-                    [style.color]="'#B2B2B2'" (click)="removeElement(survey.questions, i)">
+                    [style.color]="'#B2B2B2'" (click)="removeElement(survey.format, i)">
                     <mat-icon>close</mat-icon>
                 </button>
             </div>

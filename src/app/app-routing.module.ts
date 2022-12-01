@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './core/login/login.component';
 import { PanelComponent } from './core/panel/panel.component';
+import { AdminGuard } from './guards/admin.guard';
+import { LoginGuard } from './guards/login.guard';
 import { CompanyFormComponent } from './pages/company/company-form/company-form.component';
 import { CompanyListComponent } from './pages/company/company-list/company-list.component';
 import { CompanyViewInfoComponent } from './pages/company/company-view/company-view-info/company-view-info.component';
@@ -25,10 +27,12 @@ const routes: Routes = [
     pathMatch: 'full'
   }, {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate: [ LoginGuard ]
   }, {
     path: 'panel',
     component: PanelComponent,
+    canActivate: [ AdminGuard ],
     children: [
       {
         path: '',
@@ -37,6 +41,7 @@ const routes: Routes = [
       }, {
         path: 'survey',
         component: SurveysComponent,
+        canActivate: [ AdminGuard ],
         children: [
           {
             path: '',
@@ -45,18 +50,23 @@ const routes: Routes = [
           }, {
             path: 'list',
             component: SurveysListComponent,
+            canActivate: [ AdminGuard ],
           }, {
             path: 'add',
             component: SurveysFormComponent,
+            canActivate: [ AdminGuard ],
           }, {
             path: 'edit',
             component: SurveysFormComponent,
+            canActivate: [ AdminGuard ],
           }, {
             path: 'view/responses/view',
             component: SurveysViewResponsesViewComponent,
+            canActivate: [ AdminGuard ],
           }, {
             path: 'view',
             component: SurveysViewComponent,
+            canActivate: [ AdminGuard ],
             children: [
               {
                 path: '',
@@ -65,9 +75,11 @@ const routes: Routes = [
               }, {
                 path: 'info',
                 component: SurveysViewInfoComponent,
+                canActivate: [ AdminGuard ],
               }, {
                 path: 'responses/list',
                 component: SurveysViewResponsesListComponent,
+                canActivate: [ AdminGuard ],
               }, {
                 path: '**',
                 redirectTo: 'info',
@@ -83,6 +95,7 @@ const routes: Routes = [
       }, {
         path: 'companys',
         component: CompanyComponent,
+        canActivate: [ AdminGuard ],
         children: [
           {
             path: '',
@@ -91,24 +104,31 @@ const routes: Routes = [
           }, {
             path: 'list',
             component: CompanyListComponent,
+            canActivate: [ AdminGuard ],
           }, {
             path: 'add',
             component: CompanyFormComponent,
+            canActivate: [ AdminGuard ],
           }, {
             path: 'edit',
             component: CompanyFormComponent,
+            canActivate: [ AdminGuard ],
           }, {
             path: 'view/users/add',
             component: CompanyViewUsersFormComponent,
+            canActivate: [ AdminGuard ],
           }, {
             path: 'view/users/edit',
             component: CompanyViewUsersFormComponent,
+            canActivate: [ AdminGuard ],
           }, {
             path: 'view/users/view',
             component: CompanyViewUsersViewComponent,
+            canActivate: [ AdminGuard ],
           }, {
             path: 'view',
             component: CompanyViewComponent,
+            canActivate: [ AdminGuard ],
             children: [
               {
                 path: '',
@@ -117,9 +137,11 @@ const routes: Routes = [
               }, {
                 path: 'info',
                 component: CompanyViewInfoComponent,
+                canActivate: [ AdminGuard ],
               }, {
                 path: 'users/list',
                 component: CompanyViewUsersListComponent,
+                canActivate: [ AdminGuard ],
               }, {
                 path: '**',
                 redirectTo: 'info',

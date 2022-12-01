@@ -1,6 +1,6 @@
-<app-table [total]="data.length"[searchTitle]="'usuario'" [searchPlaceholder]="'Ej. John Doe'"
+<app-table [total]="total"[searchTitle]="'usuario'" [searchPlaceholder]="'Ej. John Doe'"
     [buttonBgColor]="'#00ABB3'" [buttonTextColor]="'#FFFFFF'" [buttonText]="'Agregar usuario'"
-    [buttonIcon]="'add'" [noRecordsText]="'No se encontraron registros de usuarios'" (btnClicked)="add()">
+    [buttonIcon]="'add'" [noRecordsText]="'No se encontraron registros de usuarios'" (btnClicked)="add()" (changeFilters)="getData($event)">
     <thead>
         <tr>
             <th class="col-md-4">Nombre</th>
@@ -12,7 +12,7 @@
     <tbody>
         <ng-container *ngFor="let item of data">
             <tr>
-                <td>{{item.user}}</td>
+                <td>{{item.name}}</td>
                 <td>{{item.email}}</td>
                 <td class="text-center">{{item.type}}</td>
                 <td class="text-center">

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { CompanyService } from '../../../services/company.service';
 
 @Component({
   selector: 'app-company-list',
@@ -9,61 +10,45 @@ import { Router } from '@angular/router';
 export class CompanyListComponent implements OnInit {
   constructor(
     private router: Router,
+    private companyService: CompanyService,
   ) { }
 
   private ADD_PATTH = '/panel/companys/add';
   private EDIT_PATTH = '/panel/companys/edit';
   private VIEW_PATTH = '/panel/companys/view';
 
-  public data = [
-    {
-      id: 1,
-      socialReason: 'IKEA Distribution Services Spain S.A.',
-      bussinessActivity: 'Venta minorista de muebles y objetos para el hogar y decoración',
-      street: 'Av. del Peñón 355',
-      colonyName: 'Moctezuma 2da Secc',
-      postalCode: '1234',
-      contactEmail: 'contacto@ikea.com',
-      contactPhone: '3311223344',
-    }, {
-      id: 2,
-      socialReason: 'LEGO México, S.A. de C.V.',
-      bussinessActivity: 'Productora de juguetes',
-      street: 'Av. del Peñón 355',
-      colonyName: 'Moctezuma 2da Secc',
-      postalCode: '1234',
-      contactEmail: 'contacto@lego.com',
-      contactPhone: '3311223344',
-    }, {
-      id: 3,
-      socialReason: 'KOF COCA-COLA FEMSA, S.A.B. DE C.V.',
-      bussinessActivity: 'Productora alimenticia',
-      street: 'Av. del Peñón 355',
-      colonyName: 'Moctezuma 2da Secc',
-      postalCode: '1234',
-      contactEmail: 'contacto@coca-cola.com',
-      contactPhone: '3311223344',
-    }
-  ]
+  public data = null;
+  public total = 0;
+  
+  public filters = {};
 
   ngOnInit(): void {
   }
 
+  getData(filters: any) {
+    this.filters = filters;
+    this.companyService.getWithFilters(filters).subscribe((result: any) => {
+      this.data = result.data;
+      this.total = result.count;
+    });
+  }
   
   add() {
     this.changeView(this.ADD_PATTH);
   }
 
-  view(id: Number) {
+  view(id: number) {
     this.changeView(this.VIEW_PATTH, {company: id});
   }
 
-  edit(id: Number) {
+  edit(id: number) {
     this.changeView(this.EDIT_PATTH, {company: id});
   }
   
-  delete(id: Number) {
-    
+  delete(id: number) {
+    this.companyService.delete(id).subscribe((result: any) => {
+      this.getData(this.filters);
+    });
   }
 
   changeView(path: string, data?: any) {

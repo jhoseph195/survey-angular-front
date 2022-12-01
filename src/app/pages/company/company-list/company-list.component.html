@@ -2,9 +2,9 @@
     <mat-card-title>Empresas</mat-card-title>
     <mat-divider></mat-divider>
     <mat-card-content class="pt-3">
-        <app-table [total]="data.length"[searchTitle]="'empresa'" [searchPlaceholder]="'Ej. Ejemplomex SA de CV'"
+        <app-table [total]="total"[searchTitle]="'empresa'" [searchPlaceholder]="'Ej. Ejemplomex SA de CV'"
             [buttonBgColor]="'#00ABB3'" [buttonTextColor]="'#FFFFFF'" [buttonText]="'Agregar empresa'"
-            [buttonIcon]="'add'" [noRecordsText]="'No se encontraron registros de empresas'" (btnClicked)="add()">
+            [buttonIcon]="'add'" [noRecordsText]="'No se encontraron registros de empresas'" (btnClicked)="add()" (changeFilters)="getData($event)">
             <thead>
                 <tr>
                     <th class="col-md-3">Empresa</th>
@@ -18,9 +18,9 @@
                 <ng-container *ngFor="let item of data">
                     <tr>
                         <td>{{item.socialReason}}</td>
-                        <td>{{item.bussinessActivity}}</td>
-                        <td class="text-center">{{item.contactEmail}}</td>
-                        <td class="text-center">{{item.contactPhone}}</td>
+                        <td>{{item.business}}</td>
+                        <td class="text-center">{{item.email}}</td>
+                        <td class="text-center">{{item.phone}}</td>
                         <td class="text-center">
                             <app-mini-button [type]="1" (btnClicked)="view(item.id)"></app-mini-button>
                             <app-mini-button [type]="2" (btnClicked)="edit(item.id)"></app-mini-button>

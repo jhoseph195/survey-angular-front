@@ -18,26 +18,26 @@
             </div>
             <div class="col-md-4">
                 <b>Título</b>
-                <p>{{survey.title}}</p>
+                <p>{{survey.survey.title}}</p>
             </div>
             <div class="col-md-4">
                 <b>Empresa</b>
-                <p>{{survey.companyName}}</p>
+                <p>{{survey.survey.company.socialReason}}</p>
             </div>
             <div class="col-md-4">
                 <b>Capturado por</b>
-                <p>{{survey.capturedBy}}</p>
+                <p>{{survey.user.name}}</p>
             </div>
             <div class="col-md-12">
                 <b>Descripción</b>
-                <p>{{survey.description}}</p>
+                <p>{{survey.survey.description}}</p>
             </div>
             <div class="col-md-12 pt-3">
                 <h3>
                     <b>Respuestas</b>
                 </h3>
             </div>
-            <ng-container *ngFor="let question of survey.questions; let i = index">
+            <ng-container *ngFor="let question of survey.format; let i = index">
                 <div class="col-md-12 pt-3">
                     <b>{{question.question}} {{question.isRequired ? '(Obligatorio)' : ''}}</b>
                     <p>{{question.question}}</p>

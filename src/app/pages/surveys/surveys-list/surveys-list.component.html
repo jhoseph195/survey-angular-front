@@ -2,9 +2,9 @@
     <mat-card-title>Encuestas</mat-card-title>
     <mat-divider></mat-divider>
     <mat-card-content class="pt-3">
-        <app-table [total]="data.length"[searchTitle]="'encuesta'" [searchPlaceholder]="'Ej. Encuesta de satisfacción'"
+        <app-table [total]="total"[searchTitle]="'encuesta'" [searchPlaceholder]="'Ej. Encuesta de satisfacción'"
             [buttonBgColor]="'#00ABB3'" [buttonTextColor]="'#FFFFFF'" [buttonText]="'Agregar encuesta'"
-            [buttonIcon]="'add'" [noRecordsText]="'No se encontraron registros de encuestas'" (btnClicked)="add()">
+            [buttonIcon]="'add'" [noRecordsText]="'No se encontraron registros de encuestas'" (btnClicked)="add()" (changeFilters)="getData($event)">
             <thead>
                 <tr>
                     <th class="col-md-3">Titulo</th>
@@ -18,7 +18,7 @@
                     <tr>
                         <td>{{item.title}}</td>
                         <td>{{item.description}}</td>
-                        <td class="text-center">{{item.company}}</td>
+                        <td class="text-center">{{item.company.socialReason}}</td>
                         <td class="text-center">
                             <app-mini-button [type]="1" (btnClicked)="view(item.id)"></app-mini-button>
                             <app-mini-button [type]="2" (btnClicked)="edit(item.id)"></app-mini-button>

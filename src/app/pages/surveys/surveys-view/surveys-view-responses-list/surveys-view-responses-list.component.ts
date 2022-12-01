@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
+import { AnswerService } from '../../../../services/answer.service';
 
 @Component({
   selector: 'app-surveys-view-responses-list',
@@ -12,37 +13,31 @@ export class SurveysViewResponsesListComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private answerService: AnswerService,
   ) {
     this.surveyId = this.route.snapshot.queryParamMap.get('survey');
   }
 
   private VIEW_PATTH = '/panel/survey/view/responses/view';
 
-  public data = [
-    {
-      id: 1,
-      title: 'Encuesta de satisfacción',
-      capturedBy: 'John Doe',
-      date: '2022-11-03 15:23',
-    }, {
-      id: 2,
-      title: 'Encuesta de satisfacción',
-      capturedBy: 'Joseph Gómez',
-      date: '2022-11-05 15:23',
-    }, {
-      id: 3,
-      title: 'Encuesta de satisfacción',
-      capturedBy: 'Carlos Velzco',
-      date: '2022-11-06 15:23',
-    }
-  ]
-
+  public data = null;
+  public total = 0;
+  
   ngOnInit(): void {
   }
 
   view(id: Number) {
     this.changeView(this.VIEW_PATTH, {survey: id});
+  }
+
+  getData(filters: any) {
+    filters.surveyId = this.surveyId;
+    
+    this.answerService.getWithFilters(filters).subscribe((result: any) => {
+      this.data = result.data;
+      this.total = result.count;
+    });
   }
 
   changeView(path: string, data?: any) {

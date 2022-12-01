@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { CompanyService } from '../../../../services/company.service';
 
 @Component({
   selector: 'app-company-view-info',
@@ -10,23 +11,29 @@ export class CompanyViewInfoComponent implements OnInit {
   private companyId; 
 
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private companyService: CompanyService,
   ) {
     this.companyId = this.route.snapshot.queryParamMap.get('company');
   }
   
   public company: any = {
-    id: 1,
-    socialReason: 'IKEA Distribution Services Spain S.A.',
-    bussinessActivity: 'Venta minorista de muebles y objetos para el hogar y decoración',
-    street: 'Av. del Peñón 355',
-    colonyName: 'Moctezuma 2da Secc',
-    postalCode: '1234',
-    contactEmail: 'contacto@ikea.com',
-    contactPhone: '3311223344',
+    socialReason: '',
+    business: '',
+    address: '',
+    neighborhood: '',
+    postalCode: '',
+    email: '',
+    phone: '',
   }
-
   
   ngOnInit(): void {
+    this.getData();
+  }
+
+  getData() {
+    this.companyService.getById(Number(this.companyId)).subscribe((response: any) => {
+      this.company = response.data;
+    });
   }
 }

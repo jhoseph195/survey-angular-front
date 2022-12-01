@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { CompanyService } from '../../../services/company.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-company-form',
@@ -11,7 +13,8 @@ export class CompanyFormComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private companyService: CompanyService,
   ) {
     this.companyId = this.route.snapshot.queryParamMap.get('company');
   }
@@ -19,14 +22,13 @@ export class CompanyFormComponent implements OnInit {
   private LIST_PATH = 'panel/companys/';
 
   public company: any = {
-    id: 1,
-    socialReason: 'IKEA Distribution Services Spain S.A.',
-    bussinessActivity: 'Venta minorista de muebles y objetos para el hogar y decoración',
-    street: 'Av. del Peñón 355',
-    colonyName: 'Moctezuma 2da Secc',
-    postalCode: '1234',
-    contactEmail: 'contacto@ikea.com',
-    contactPhone: '3311223344',
+    socialReason: '',
+    business: '',
+    address: '',
+    neighborhood: '',
+    postalCode: '',
+    email: '',
+    phone: '',
   }
 
   public back() {
@@ -34,13 +36,49 @@ export class CompanyFormComponent implements OnInit {
   }
 
   public save() {
-    this.changeView(this.LIST_PATH);
+    Swal.fire({
+      title: 'Guardar',
+      text: '¿Está seguro de guardar esta información?',
+      icon: 'question',
+      showCancelButton: true,
+      confirmButtonText: 'Sí, guardar',
+      cancelButtonText: 'Cancelar'
+    }).then(async (result) => {
+      if (this.companyId) {
+        this.update();
+      } else {
+        this.insert();
+      }
+    });
+  }
+  
+  insert() {
+    this.companyService.create(this.company).subscribe((response: any) => {
+      Swal.fire( 'Éxito', 'La información se guardo con éxito', 'success');
+      this.changeView(this.LIST_PATH);
+    });
+  }
+
+  update() {
+    this.companyService.update(this.company, Number(this.companyId)).subscribe((response: any) => {
+      Swal.fire( 'Éxito', 'La información se actualizó con éxito', 'success');
+      this.changeView(this.LIST_PATH);
+    });
   }
   
   private changeView(path: string) {
     this.router.navigate([path]);
   }
 
+  getData() {
+    this.companyService.getById(Number(this.companyId)).subscribe((response: any) => {
+      this.company = response.data;
+    });
+  }
+
   ngOnInit(): void {
+    if (this.companyId) {
+      this.getData();
+    }
   }
 }

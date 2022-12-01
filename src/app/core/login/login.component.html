@@ -12,19 +12,19 @@
                             <mat-form-field class="btn-block" appearance="legacy">
                                 <mat-icon class="search-icon" matPrefix>person</mat-icon>
                                 <mat-label>Usuario</mat-label>
-                                <input matInput [placeholder]="'Usuario'">
+                                <input matInput [placeholder]="'Usuario'" [(ngModel)]="email">
                             </mat-form-field>
                         </div>
                         <div class="col-md-12 mb-4">
                             <mat-form-field class="btn-block" appearance="legacy">
                                 <mat-icon class="search-icon" matPrefix>lock</mat-icon>
                                 <mat-label>Contraseña</mat-label>
-                                <input matInput [placeholder]="'Contraseña'">
+                                <input matInput [placeholder]="'Contraseña'" [(ngModel)]="password">
                             </mat-form-field>
                         </div>
                         <div class="col-md-12">
                             <button class="btn-block" [style.background-color]="'#00ABB3'" [style.color]="'#fff'"
-                                mat-flat-button (click)="changeView()">Iniciar sesión</button>
+                                mat-flat-button (click)="login()">Iniciar sesión</button>
                         </div>
                     </div>
                 </div>
